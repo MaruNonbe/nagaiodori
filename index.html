@@ -3,19 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ARテスト</title>
-    <!-- 最新のmodel-viewerを読み込み -->
+    <title>AR Scale & Position Check</title>
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
-        model-viewer { width: 100%; height: 100%; background-color: #e0e0e0; }
-        /* ARボタンのスタイルを強制的に目立たせる */
+        model-viewer { width: 100%; height: 100%; background-color: #333; }
         .ar-button {
-            position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
-            padding: 20px 40px; border-radius: 12px; border: none;
-            background: #4285F4; color: white; font-size: 18px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.3); cursor: pointer;
-            z-index: 10;
+            position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
+            padding: 16px 32px; border-radius: 20px; border: none;
+            background: #ff9800; color: white; font-size: 16px; font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 10;
         }
     </style>
 </head>
@@ -29,11 +26,12 @@
         autoplay
         animation-name="Armature|All_Night_Dance|baselayer"
         shadow-intensity="1"
+        scale="0.01 0.01 0.01"
+        ar-scale="fixed"
         alt="3Dモデル">
         
-        <!-- カスタムARボタン -->
         <button slot="ar-button" class="ar-button">
-            🚀 ARで表示する
+            📦 サイズ固定でAR配置する
         </button>
         
     </model-viewer>
