@@ -23,14 +23,16 @@
             color: #333;
             margin-bottom: 10px;
         }
-        model-viewer {
-            width: 100%;
-            max-width: 600px;
-            height: 70vh;
-            background-color: #ffffff;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            border-radius: 12px;
-        }
+<model-viewer 
+    src="model.glb" 
+    ios-src="model.usdz" 
+    ar 
+    ar-modes="webxr scene-viewer quick-look" 
+    camera-controls 
+    autoplay 
+    animation-name="Armature|All_Night_Dance|baselayer">
+</model-viewer>
+
         /* ARボタンのデザイン調整 */
         <strong>#ar-button</strong> {
             background: #ffffff;
