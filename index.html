@@ -3,44 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Model Viewer</title>
+    <title>AR Animation Viewer</title>
     <!-- model-viewerの読み込み -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
-        body { margin: 0; padding: 0; width: 100vw; height: 100vh; }
+        body { margin: 0; padding: 0; width: 100vw; height: 100vh; overflow: hidden; }
         model-viewer {
             width: 100%;
             height: 100%;
-            background-color: #f0f0f0;
+            background-color: #1a1a1a;
+        }
+        .ar-button {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 14px 28px;
+            border-radius: 30px;
+            border: none;
+            background: #ff5722;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
 
     <model-viewer 
-        id="model"
+        id="mv"
         src="model.glb" 
         ar 
         ar-modes="webxr scene-viewer quick-look" 
         camera-controls 
         autoplay 
         animation-name="Armature|All_Night_Dance|baselayer"
-        shadow-intensity="1" 
-        ar-scale="auto"
-        camera-orbit="0deg 75deg 2m"
-        alt="3D Character">
+        shadow-intensity="1"
+        camera-orbit="0deg 75deg 2.5m">
         
-        <button slot="ar-button" style="padding: 15px; border-radius: 10px; border: none; background: #4285f4; color: white;">
-            ARで表示する
+        <button slot="ar-button" class="ar-button">
+            🚀 ARでダンスを見る
         </button>
     </model-viewer>
 
     <script>
-        // デバッグ用：読み込みエラーを表示
-        const modelViewer = document.querySelector("#model");
-        modelViewer.addEventListener('error', (event) => {
-            console.error("モデルの読み込みエラー:", event);
-            alert("モデルの読み込みに失敗しました。ファイル名やパスを確認してください。");
+        const modelViewer = document.querySelector('#mv');
+
+        // ARモードに入った瞬間にもアニメーションを強制再生させる
+        modelViewer.addEventListener('ar-status', (event) => {
+            if (event.detail.status === 'session-started') {
+                modelViewer.play();
+            }
         });
     </script>
 </body>
