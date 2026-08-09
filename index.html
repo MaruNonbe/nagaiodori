@@ -3,15 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AR Scale & Position Check</title>
+    <title>AR Model Viewer</title>
+    <!-- model-viewerの読み込み -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <style>
         body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; }
-        model-viewer { width: 100%; height: 100%; background-color: #333; }
+        model-viewer { width: 100%; height: 100%; background-color: #f5f5f5; }
         .ar-button {
             position: absolute; bottom: 30px; left: 50%; transform: translateX(-50%);
-            padding: 16px 32px; border-radius: 20px; border: none;
-            background: #ff9800; color: white; font-size: 16px; font-weight: bold;
+            padding: 16px 32px; border-radius: 30px; border: none;
+            background: #2196F3; color: white; font-size: 16px; font-weight: bold;
             box-shadow: 0 4px 10px rgba(0,0,0,0.3); cursor: pointer; z-index: 10;
         }
     </style>
@@ -26,12 +27,10 @@
         autoplay
         animation-name="Armature|All_Night_Dance|baselayer"
         shadow-intensity="1"
-        scale="0.01 0.01 0.01"
-        ar-scale="fixed"
-        alt="3Dモデル">
+        alt="3D Character">
         
         <button slot="ar-button" class="ar-button">
-            📦 サイズ固定でAR配置する
+            🚀 ARで配置する
         </button>
         
     </model-viewer>
